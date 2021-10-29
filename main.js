@@ -1,37 +1,37 @@
 const botonesAddToCart = document.querySelectorAll('.addToCart');
 const CarritoContenedor = document.querySelector('.CarritoContenedor')
 
-botonesAddToCart.forEach(botonAddToCart =>{
-     botonAddToCart.addEventListener('click', AñadirConClick)
+botonesAddToCart.forEach(botonAddToCart => {
+    botonAddToCart.addEventListener('click', AñadirConClick)
 });
 
-const botonComprar = document.querySelector('.comprarButton').addEventListener('click',comprar)
+const botonComprar = document.querySelector('.comprarButton').addEventListener('click', comprar)
 
-function AñadirConClick(event){
-const boton = event.target;
-const item= boton.closest('.item')
-const titulo = item.querySelector('.item-title').textContent;
-const precio = item.querySelector('.item-price').textContent;
-const imagen = item.querySelector('.item-image').src;
-AñadirAlCarrito(titulo, precio, imagen)
+function AñadirConClick(event) {
+    const boton = event.target;
+    const item = boton.closest('.item')
+    const titulo = item.querySelector('.item-title').textContent;
+    const precio = item.querySelector('.item-price').textContent;
+    const imagen = item.querySelector('.item-image').src;
+    AñadirAlCarrito(titulo, precio, imagen)
 }
 
-function AñadirAlCarrito(titulo, precio, imagen){
+function AñadirAlCarrito(titulo, precio, imagen) {
 
     //No duplicar valores
     const elementoTitulo = CarritoContenedor.getElementsByClassName('shopTitulo');
-    for (let i = 0; i < elementoTitulo.length; i++){
-        if(elementoTitulo[i].innerText == titulo){
-           let elementoCantidad =  CarritoContenedor.querySelector('.shopCantidad')
-           elementoCantidad.value++
-           ActualizarTotal();
-           return;
+    for (let i = 0; i < elementoTitulo.length; i++) {
+        if (elementoTitulo[i].innerText == titulo) {
+            let elementoCantidad = CarritoContenedor.querySelector('.shopCantidad')
+            elementoCantidad.value++
+            ActualizarTotal();
+            return;
         }
     }
 
     const Compras = document.createElement('div')
     const ContenidoCompras =
-    `<div class="shopping-cart-items CarritoContenedor">
+        `<div class="shopping-cart-items CarritoContenedor">
         <div class="row shopItems">
             <div class="col-6">
                 <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
@@ -64,42 +64,45 @@ function AñadirAlCarrito(titulo, precio, imagen){
     Compras.querySelector('.shopCantidad').addEventListener('change', CambiarshopCantidad)
 
     ActualizarTotal();
-    
-    
+
+
 }
-    //ACTUALIZAR TOTAL
-    function ActualizarTotal(){
+//ACTUALIZAR TOTAL
+function ActualizarTotal() {
     let total = 0;
     const ObtenerTotal = document.querySelector('.total')
     const ShoppingItems = document.querySelectorAll('.shopItems')
     ShoppingItems.forEach(ShoppingItem => {
         const ShoppingItemPrecio = ShoppingItem.querySelector('.shopPrecio');
         const PrecioParceado = Number(ShoppingItemPrecio.textContent.replace('$', ''));
-        const CantidadItems =  ShoppingItem.querySelector('.shopCantidad')
+        const CantidadItems = ShoppingItem.querySelector('.shopCantidad')
         const CantidadItemsValor = Number(CantidadItems.value)
         total = total + PrecioParceado * CantidadItemsValor
-        })
-    ObtenerTotal.innerHTML = `$${total.toFixed(2)}`;    
-    }
+    })
+    ObtenerTotal.innerHTML = `$${total.toFixed(2)}`;
+}
 
-    //BORRAR ITEM
-    function borrarItem(event){
-        const botonBorrar = event.target;
-        botonBorrar.closest('.shopItems').remove();
-        ActualizarTotal();
-    }
+//BORRAR ITEM
+function borrarItem(event) {
+    const botonBorrar = event.target;
+    botonBorrar.closest('.shopItems').remove();
+    ActualizarTotal();
+}
 
-    //CAMABIAR CANTIDAD DE ITEMS
-    function CambiarshopCantidad(event){
-        const input = event.target
-        if(input.value <= 0){
-            input.value = 1;
-        }
-        ActualizarTotal();
+//CAMABIAR CANTIDAD DE ITEMS
+function CambiarshopCantidad(event) {
+    const input = event.target
+    if (input.value <= 0) {
+        input.value = 1;
     }
+    ActualizarTotal();
+}
 
-    //Comprar 
-    function comprar(){
-        CarritoContenedor.innerHTML = ''
-        ActualizarTotal();
-    }
+//Comprar 
+function comprar() {
+    CarritoContenedor.innerHTML = ''
+    ActualizarTotal();
+}
+
+
+
