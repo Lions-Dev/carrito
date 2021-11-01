@@ -25,18 +25,18 @@ function AñadirAlCarrito(titulo, precio, imagen) {
             let elementoCantidad = CarritoContenedor.querySelector('.shopCantidad')
             elementoCantidad.value++
             ActualizarTotal();
-            return;
+            return; 
         }
     }
 
     const Compras = document.createElement('div')
     const ContenidoCompras =
-        `<div class="shopping-cart-items CarritoContenedor">
+        `<div class=" CarritoContenedor">
         <div class="row shopItems">
             <div class="col-6">
                 <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                    <img src='${imagen}' class="shopping-cart-image">
-                    <h6 class="shopping-cart-item-title shopTitulo text-truncate ml-3 mb-0">${titulo}
+                    <img src='${imagen}' class="shopImage">
+                    <h6 class="shopTitulo text-truncate ">${titulo}
                     </h6>
                 </div>
             </div>
@@ -48,7 +48,7 @@ function AñadirAlCarrito(titulo, precio, imagen) {
             <div class="col-4">
                 <div
                     class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-                    <input class="shopping-cart-quantity-input shopCantidad" type="number"
+                    <input class="inputCantidad shopCantidad" type="number"
                         value="1">
                     <button class="btn btn-danger buttonDelete" type="button">X</button>
                 </div>
