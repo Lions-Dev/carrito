@@ -1,3 +1,41 @@
+//Agregar Json a items
+AgregarJsonItem();
+function AgregarJsonItem() {
+    const itemsContenedor = document.querySelector('.items')
+    for (let i = 0; i < juegos.length; i++) {
+        const items = document.createElement('div')
+        items.classList.add('row')
+        let agregarItem1 =
+            `<div class="col-6 col-md-6">
+        <div class="item shadow mb-4">
+            <h3 class="item-title">${juegos[i].titulo}</h3>
+            <img class="item-image" src=${juegos[i].imagen}>
+    
+            <div class ="item-details">
+            <h4 class ="item-price">$${juegos[i].precio}</h4>
+            <button class ="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+            </div>
+        </div>`
+        i++
+        let agregarItem2 =
+            `<div class="col-6 col-md-6">
+        <div class="item shadow mb-4">
+            <h3 class="item-title">${juegos[i].titulo}</h3>
+            <img class="item-image" src=${juegos[i].imagen}>
+    
+            <div class ="item-details">
+            <h4 class ="item-price">$${juegos[i].precio}</h4>
+            <button class ="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+            </div>
+        </div>`
+        items.innerHTML = agregarItem1
+        items.innerHTML += agregarItem2
+        itemsContenedor.append(items)
+    }
+}
+
+
+//Agregar items a carrito de compras
 const botonesAddToCart = document.querySelectorAll('.addToCart');
 const CarritoContenedor = document.querySelector('.CarritoContenedor')
 
@@ -17,27 +55,31 @@ function AñadirConClick(event) {
 }
 
 function AñadirAlCarrito(titulo, precio, imagen) {
-
     //No duplicar valores
+    
     const elementoTitulo = CarritoContenedor.getElementsByClassName('shopTitulo');
+
     for (let i = 0; i < elementoTitulo.length; i++) {
         if (elementoTitulo[i].innerText == titulo) {
-            let elementoCantidad = CarritoContenedor.querySelector('.shopCantidad')
+            
+            let elementoCantidad = elementoTitulo[i].parentElement.parentElement.parentElement.querySelector('.shopCantidad')
+            console.log(elementoCantidad)
             elementoCantidad.value++
             ActualizarTotal();
-            return; 
+            return
         }
     }
+    
+   
 
+    //agregar items a carrito de compras
     const Compras = document.createElement('div')
     const ContenidoCompras =
-        `<div class=" CarritoContenedor">
-        <div class="row shopItems">
+        `<div class="row shopItems">
             <div class="col-6">
                 <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
                     <img src='${imagen}' class="shopImage">
-                    <h6 class="shopTitulo text-truncate ">${titulo}
-                    </h6>
+                    <h6 class="shopTitulo text-truncate ">${titulo}</h6>
                 </div>
             </div>
             <div class="col-2">
@@ -53,9 +95,7 @@ function AñadirAlCarrito(titulo, precio, imagen) {
                     <button class="btn btn-danger buttonDelete" type="button">X</button>
                 </div>
             </div>
-        </div>
-      
-    </div>`;
+        </div>`;
 
     Compras.innerHTML = ContenidoCompras
     CarritoContenedor.append(Compras)
@@ -64,9 +104,11 @@ function AñadirAlCarrito(titulo, precio, imagen) {
     Compras.querySelector('.shopCantidad').addEventListener('change', CambiarshopCantidad)
 
     ActualizarTotal();
+    const modalContenedor = document.querySelector('.modal-body')
 
-
+    CarritoContenedor.append(modalContenedor)
 }
+
 //ACTUALIZAR TOTAL
 function ActualizarTotal() {
     let total = 0;
@@ -103,6 +145,8 @@ function comprar() {
     CarritoContenedor.innerHTML = ''
     ActualizarTotal();
 }
+
+
 
 
 
