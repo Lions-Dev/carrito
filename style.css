@@ -1,3 +1,6 @@
+h1{
+  padding-top: 5rem;
+}
 .item {
   border: 2px solid #000;
   padding: 10px;
@@ -67,3 +70,6 @@
 }
 
 
+.fa-shopping-cart{
+  font-size: 20px;
+}

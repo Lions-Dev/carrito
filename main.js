@@ -37,7 +37,7 @@ function AgregarJsonItem() {
 
 //Agregar items a carrito de compras
 const botonesAddToCart = document.querySelectorAll('.addToCart');
-const CarritoContenedor = document.querySelector('.CarritoContenedor')
+const modalContenedor = document.querySelector('.modal-body')
 
 botonesAddToCart.forEach(botonAddToCart => {
     botonAddToCart.addEventListener('click', AñadirConClick)
@@ -57,7 +57,7 @@ function AñadirConClick(event) {
 function AñadirAlCarrito(titulo, precio, imagen) {
     //No duplicar valores
     
-    const elementoTitulo = CarritoContenedor.getElementsByClassName('shopTitulo');
+    const elementoTitulo = modalContenedor.getElementsByClassName('shopTitulo');
 
     for (let i = 0; i < elementoTitulo.length; i++) {
         if (elementoTitulo[i].innerText == titulo) {
@@ -98,15 +98,17 @@ function AñadirAlCarrito(titulo, precio, imagen) {
         </div>`;
 
     Compras.innerHTML = ContenidoCompras
-    CarritoContenedor.append(Compras)
+    modalContenedor.append(Compras)
+    
+    
+  
+    
 
     Compras.querySelector('.buttonDelete').addEventListener('click', borrarItem)
     Compras.querySelector('.shopCantidad').addEventListener('change', CambiarshopCantidad)
 
     ActualizarTotal();
-    const modalContenedor = document.querySelector('.modal-body')
-
-    CarritoContenedor.append(modalContenedor)
+    
 }
 
 //ACTUALIZAR TOTAL
@@ -140,9 +142,9 @@ function CambiarshopCantidad(event) {
     ActualizarTotal();
 }
 
-//Comprar 
+ 
 function comprar() {
-    CarritoContenedor.innerHTML = ''
+    //CarritoContenedor.innerHTML = ''
     ActualizarTotal();
 }
 
