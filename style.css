@@ -1,6 +1,10 @@
 h1{
   padding-top: 5rem;
 }
+
+span{
+  color:#f21b3f;
+}
 .item {
   border: 2px solid #000;
   padding: 10px;
@@ -72,4 +76,8 @@ h1{
 
 .fa-shopping-cart{
   font-size: 20px;
+}
+
+.modal-header{
+  text-align: center;
 }

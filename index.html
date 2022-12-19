@@ -14,11 +14,11 @@
 
 <body>
   <!-- navbar-->
-    <nav class="navbar navbar-dark bg-dark fixed-top">
+    <nav class="navbar  bg-dark fixed-top">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Navbar</span>
             <div class="col-6 comprarButtonDiv d-flex align-items-center">
-                <button class="btn btn-success comprarButton  " type="button" data-bs-toggle="modal"
+                <button class="btn btn-light comprarButton  " type="button" data-bs-toggle="modal"
                     data-bs-target="#comprarModal"><i class="fas fa-shopping-cart"></i></button>
             </div>
         </div>
@@ -86,22 +86,24 @@
     <div class="modal " id="comprarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable ">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header ">
                     <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                 </div>
+                <div class="row">
                 <div class="modal-footer">
-                    <div class="shopping-cart-total d-flex align-items-center">
+                    <div class="col-5 shopping-cart-total d-flex align-items-center">
                         <p class="mb-0">Total</p>
                         <p class="ml-4 mb-0 total">$0</p>
 
                     </div>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="col-2 btn btn-secondary limpiar" >Limpiar</button>
+                    <button type="button" class="col-3 btn btn-primary ">Comprar</button>
                 </div>
+            </div>
             </div>
         </div>
     </div>

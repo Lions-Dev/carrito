@@ -43,7 +43,7 @@ botonesAddToCart.forEach(botonAddToCart => {
     botonAddToCart.addEventListener('click', AñadirConClick)
 });
 
-const botonComprar = document.querySelector('.comprarButton').addEventListener('click', comprar)
+const botonComprar = document.querySelector('.limpiar').addEventListener('click', limpiar)
 
 function AñadirConClick(event) {
     const boton = event.target;
@@ -58,12 +58,9 @@ function AñadirAlCarrito(titulo, precio, imagen) {
     //No duplicar valores
     
     const elementoTitulo = modalContenedor.getElementsByClassName('shopTitulo');
-
     for (let i = 0; i < elementoTitulo.length; i++) {
         if (elementoTitulo[i].innerText == titulo) {
-            
             let elementoCantidad = elementoTitulo[i].parentElement.parentElement.parentElement.querySelector('.shopCantidad')
-            console.log(elementoCantidad)
             elementoCantidad.value++
             ActualizarTotal();
             return
@@ -109,6 +106,7 @@ function AñadirAlCarrito(titulo, precio, imagen) {
 
     ActualizarTotal();
     
+    hoverCarrito()
 }
 
 //ACTUALIZAR TOTAL
@@ -142,13 +140,21 @@ function CambiarshopCantidad(event) {
     ActualizarTotal();
 }
 
- 
-function comprar() {
-    //CarritoContenedor.innerHTML = ''
+ //Limpiar items
+function limpiar() {
+    modalContenedor.innerHTML = ''
     ActualizarTotal();
 }
 
 
+function hoverCarrito(){
+    if(modalContenedor != undefined ){
+        console.log(modalContenedor)
+        let  botonCarrito = document.querySelector('.comprarButton')
+        botonCarrito.innerHTML = '¡Items en el carrito!  <i class="fas fa-shopping-cart"></i>'
+        botonCarrito.style.color = '#f21b3f'
+    }
+}
 
 
 
