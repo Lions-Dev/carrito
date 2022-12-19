@@ -1,3 +1,4 @@
+import { juegos } from "./JSON/servicios.js"
 //Agregar Json a items
 AgregarJsonItem();
 function AgregarJsonItem() {

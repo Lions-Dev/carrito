@@ -9,7 +9,7 @@ function servicioTraerItems(params) {
     ajax()
 }*/
 
-const juegos = [
+export const juegos = [
     {
         "id": 1,
         "imagen": "./img/Mickey.jpg",
